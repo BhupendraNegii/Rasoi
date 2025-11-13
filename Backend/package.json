@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon  server.js",
+    "reset-db": "node scripts/resetDatabase.js",
+    "fix-user-table": "node scripts/fixUserTable.js",
+    "fix-orders-table": "node scripts/fixOrdersTable.js",
+    "verify-tables": "node scripts/verifyAllTables.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.3.0",
+    "sequelize": "^6.32.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.1.4",
+    "stripe": "^16.8.0",
+    "validator": "^13.12.0"
+  }
+}
