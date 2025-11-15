@@ -18,33 +18,83 @@ function Home() {
     <>
     <Header/>
     
-    {/* Featured Section */}
-    <section className='mt-12 mb-16'>
+    {/* Subtle background color sections */}
+    <div className="relative">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 left-0 w-full h-96 bg-gradient-to-br from-orange-50/20 via-yellow-50/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute top-1/2 right-0 w-2/3 h-96 bg-gradient-to-l from-green-50/15 via-transparent to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/3 w-1/2 h-96 bg-gradient-to-t from-purple-50/15 via-transparent to-transparent rounded-full blur-3xl"></div>
+      </div>
+      
+      {/* Featured Section */}
+      <section className='mt-12 mb-16 relative'>
       <div className='flex justify-between items-center mb-8'>
         <div>
-          <h2 className='text-3xl font-bold text-[#262626] mb-2'>Featured Dishes</h2>
-          <p className='text-[#808080]'>Our most popular and highly rated dishes</p>
+          <h2 className='text-4xl font-bold mb-2 bg-gradient-to-r from-[#ff6b47] via-[#ff9f1c] to-[#f4d03f] bg-clip-text text-transparent drop-shadow-lg'>
+            Featured Dishes
+          </h2>
+          <p className='text-gray-600 text-lg'>Our most popular and highly rated dishes</p>
         </div>
-        <Link to='/menu' className='text-[#2d5016] font-semibold hover:text-[#3d7026] transition-colors'>
-          View All Menu →
+        <Link to='/menu' className='group bg-gradient-to-r from-[#ff6b47] to-[#ff9f1c] text-white font-bold px-6 py-3 rounded-full 
+          hover:shadow-2xl hover:scale-105 transform transition-all duration-300 flex items-center gap-3 shadow-lg'>
+          <span>View All Menu</span>
+          <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
         </Link>
       </div>
-      <div className='grid grid-cols-list gap-6'>
+      <div className='grid grid-cols-list gap-8'>
         {featuredItems.map((item, index) => (
-          <div key={index} className='bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300'>
-            <div className='relative h-48 overflow-hidden'>
+          <div key={index} className='group bg-gradient-to-br from-white to-orange-50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl 
+            transition-all duration-500 transform hover:-translate-y-3 hover:scale-[1.03] border-2 border-gradient-to-r from-[#ff6b47]/20 via-[#ff9f1c]/20 to-[#f4d03f]/20'>
+            <div className='relative h-56 overflow-hidden'>
               <img 
                 src={url + "/images/" + item.image} 
-                className='w-full h-full object-cover hover:scale-110 transition-transform duration-300' 
+                className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-500' 
                 alt={item.name} 
               />
-              <div className='absolute top-3 right-3 bg-white px-3 py-1 rounded-full shadow-lg'>
-                <span className='text-[#2d5016] font-semibold'>₹{item.price}</span>
+              <div className='absolute inset-0 bg-gradient-to-t from-[#ff6b47]/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
+              <div className='absolute top-4 right-4 bg-gradient-to-br from-[#ff6b47] to-[#ff9f1c] text-white backdrop-blur-sm px-4 py-2 rounded-full shadow-2xl border-2 border-white/50'>
+                <span className='font-bold text-lg drop-shadow-md'>₹{item.price}</span>
+              </div>
+              <div className='absolute top-4 left-4 opacity-0 group-hover:opacity-100 transition-all duration-300'>
+                <div className='bg-gradient-to-r from-[#27ae60] to-[#2ecc71] text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg'>
+                  ⭐ Popular
+                </div>
+              </div>
+              <div className='absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-y-0 translate-y-2'>
+                <button className='w-full bg-gradient-to-r from-[#ff6b47] to-[#ff9f1c] text-white px-4 py-3 rounded-full shadow-2xl border-2 border-white/50 
+                  hover:from-[#ff8a6b] hover:to-[#ffb84d] transition-all duration-300 flex items-center justify-center gap-2 font-bold text-sm hover:scale-105 transform'>
+                  <span className="animate-bounce">🛒</span>
+                  Add to Cart
+                </button>
               </div>
             </div>
-            <div className='p-4'>
-              <h3 className='text-lg font-semibold text-[#262626] mb-1'>{item.name}</h3>
-              <p className='text-sm text-[#808080] line-clamp-2'>{item.description}</p>
+            <div className='p-6 bg-gradient-to-br from-white via-orange-50 to-yellow-50'>
+              <h3 className='text-xl font-bold text-gray-800 mb-2 group-hover:text-[#ff6b47] transition-all duration-300 flex items-center gap-2'>
+                <span className="text-2xl animate-pulse">
+                  {index % 3 === 0 ? '🍕' : index % 3 === 1 ? '🍜' : '🍔'}
+                </span>
+                {item.name}
+              </h3>
+              <p className='text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4'>{item.description}</p>
+              <div className='flex items-center justify-between'>
+                <div className='flex items-center gap-2'>
+                  <div className='flex text-yellow-400'>
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className='text-xs font-bold text-gray-600'>(4.8)</span>
+                </div>
+                <div className='flex gap-1'>
+                  <span className="w-2 h-2 bg-[#ff6b47] rounded-full animate-pulse"></span>
+                  <span className="w-2 h-2 bg-[#ff9f1c] rounded-full animate-pulse delay-100"></span>
+                  <span className="w-2 h-2 bg-[#f4d03f] rounded-full animate-pulse delay-200"></span>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -57,40 +107,47 @@ function Home() {
     {/* Top Dishes Section */}
     <FoodDisplay category={category} />
     {/* Why Choose Us Section */}
-    <section className='mt-20 mb-16 bg-gradient-to-r from-[#f8f9fa] to-[#ffffff] rounded-2xl p-12'>
-      <h2 className='text-3xl font-bold text-center text-[#262626] mb-12'>Why Choose Rasoi?</h2>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-8'>
-        <div className='text-center'>
-          <div className='w-16 h-16 bg-[#2d5016] rounded-full flex items-center justify-center mx-auto mb-4'>
-            <svg className='w-8 h-8 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 10V3L4 14h7v7l9-11h-7z' />
-            </svg>
+    <section className='mt-20 mb-16 bg-gradient-to-br from-[#fffdf8] via-orange-50 to-yellow-50 rounded-3xl p-12 relative overflow-hidden'>
+      
+      <h2 className='text-4xl font-bold text-center mb-12 bg-gradient-to-r from-[#ff6b47] via-[#ff9f1c] to-[#f4d03f] bg-clip-text text-transparent drop-shadow-lg'>
+        Why Choose Rasoi?
+      </h2>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10'>
+        <div className='group text-center transform hover:scale-105 transition-all duration-300'>
+          <div className='w-24 h-24 bg-gradient-to-br from-[#ff6b47] via-[#ff9f1c] to-[#f4d03f] rounded-3xl flex items-center justify-center mx-auto mb-6 
+            shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 border-2 border-white/30'>
+            <div className="relative z-10 text-4xl">🚀</div>
           </div>
-          <h3 className='text-xl font-semibold text-[#262626] mb-2'>Fast Delivery</h3>
-          <p className='text-[#808080]'>Get your favorite food delivered to your doorstep in no time</p>
+          <h3 className='text-2xl font-bold text-gray-800 mb-3 group-hover:text-[#ff6b47] transition-all duration-300'>
+            Fast Delivery
+          </h3>
+          <p className='text-gray-600 leading-relaxed'>Get your favorite food delivered to your doorstep in no time with our express delivery service</p>
         </div>
-        <div className='text-center'>
-          <div className='w-16 h-16 bg-[#2d5016] rounded-full flex items-center justify-center mx-auto mb-4'>
-            <svg className='w-8 h-8 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z' />
-            </svg>
+        <div className='group text-center transform hover:scale-105 transition-all duration-300'>
+          <div className='w-24 h-24 bg-gradient-to-br from-[#27ae60] via-[#2ecc71] to-[#58d68d] rounded-3xl flex items-center justify-center mx-auto mb-6 
+            shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 border-2 border-white/30'>
+            <div className="relative z-10 text-4xl">🌿</div>
           </div>
-          <h3 className='text-xl font-semibold text-[#262626] mb-2'>Fresh Ingredients</h3>
-          <p className='text-[#808080]'>We use only the freshest ingredients for all our dishes</p>
+          <h3 className='text-2xl font-bold text-gray-800 mb-3 group-hover:text-[#27ae60] transition-all duration-300'>
+            Fresh Ingredients
+          </h3>
+          <p className='text-gray-600 leading-relaxed'>We use only the freshest ingredients for all our dishes, sourced locally daily</p>
         </div>
-        <div className='text-center'>
-          <div className='w-16 h-16 bg-[#2d5016] rounded-full flex items-center justify-center mx-auto mb-4'>
-            <svg className='w-8 h-8 text-white' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z' />
-            </svg>
+        <div className='group text-center transform hover:scale-105 transition-all duration-300'>
+          <div className='w-24 h-24 bg-gradient-to-br from-[#a29bfe] via-[#6c5ce7] to-[#8b5cf6] rounded-3xl flex items-center justify-center mx-auto mb-6 
+            shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300 border-2 border-white/30'>
+            <div className="relative z-10 text-4xl">👑</div>
           </div>
-          <h3 className='text-xl font-semibold text-[#262626] mb-2'>Premium Quality</h3>
-          <p className='text-[#808080]'>Experience premium quality food crafted with care</p>
+          <h3 className='text-2xl font-bold text-gray-800 mb-3 group-hover:text-[#6c5ce7] transition-all duration-300'>
+            Premium Quality
+          </h3>
+          <p className='text-gray-600 leading-relaxed'>Experience premium quality food crafted with care by our expert chefs</p>
         </div>
       </div>
     </section>
 
-    <Circle/>
+    {/* Removed decorative elements for cleaner design */}
+    </div>
     </>
   )
 }

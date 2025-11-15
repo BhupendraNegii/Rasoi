@@ -1,6 +1,77 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Vibrant food-inspired color palette and enhanced design system */
+:root {
+  /* Vibrant primary colors - food inspired */
+  --primary-green: #2d5016;
+  --primary-green-light: #4a7c2e;
+  --primary-green-dark: #1a3008;
+  
+  /* Appetizing accent colors */
+  --tomato-red: #ff6b47;
+  --tomato-red-light: #ff8a6b;
+  --tomato-red-dark: #e55a3c;
+  
+  --saffron-orange: #ff9f1c;
+  --saffron-orange-light: #ffb84d;
+  --saffron-orange-dark: #e6850e;
+  
+  --turmeric-yellow: #f4d03f;
+  --turmeric-yellow-light: #f7dc6f;
+  --turmeric-yellow-dark: #d4ac0d;
+  
+  --cardamom-green: #27ae60;
+  --cardamom-green-light: #58d68d;
+  --cardamom-green-dark: #1e8449;
+  
+  --coriander-green: #2ecc71;
+  --coriander-green-light: #82e0aa;
+  --coriander-green-dark: #239b56;
+  
+  --mint-green: #00b894;
+  --mint-green-light: #55efc4;
+  --mint-green-dark: #00a085;
+  
+  --lavender-purple: #a29bfe;
+  --lavender-purple-light: #c7b8f5;
+  --lavender-purple-dark: #6c5ce7;
+  
+  --cinnamon-brown: #8b4513;
+  --cinnamon-brown-light: #cd853f;
+  --cinnamon-brown-dark: #654321;
+  
+  /* Golden accent colors */
+  --accent-gold: #d4af37;
+  --accent-gold-light: #f4d03f;
+  --accent-gold-dark: #b8941f;
+  
+  /* Neutral colors with warm undertones */
+  --neutral-50: #fffdf8;
+  --neutral-100: #fef9f0;
+  --neutral-200: #fdf2e0;
+  --neutral-300: #fbe5c0;
+  --neutral-800: #2c2c2c;
+  --neutral-600: #5a5a5a;
+  --neutral-500: #8b8b8b;
+  
+  /* Vibrant gradients */
+  --gradient-spicy: linear-gradient(135deg, var(--tomato-red) 0%, var(--saffron-orange) 50%, var(--turmeric-yellow) 100%);
+  --gradient-fresh: linear-gradient(135deg, var(--mint-green) 0%, var(--cardamom-green) 50%, var(--coriander-green) 100%);
+  --gradient-golden: linear-gradient(135deg, var(--accent-gold) 0%, var(--turmeric-yellow) 50%, var(--saffron-orange-light) 100%);
+  --gradient-royal: linear-gradient(135deg, var(--primary-green) 0%, var(--lavender-purple) 50%, var(--mint-green) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--cinnamon-brown) 0%, var(--saffron-orange) 50%, var(--tomato-red-light) 100%);
+  
+  /* Enhanced shadows with color tints */
+  --shadow-sm: 0 1px 2px 0 rgba(255, 107, 71, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(255, 159, 28, 0.15), 0 2px 4px -1px rgba(255, 159, 28, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(46, 204, 113, 0.15), 0 4px 6px -2px rgba(46, 204, 113, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(212, 175, 55, 0.2), 0 10px 10px -5px rgba(212, 175, 55, 0.1);
+  --shadow-2xl: 0 25px 50px -12px rgba(255, 107, 71, 0.25);
+}
+
+/* Enhanced base styles */
 *::-webkit-scrollbar{
     display: none;
 }
@@ -12,4 +83,189 @@
 .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced body styles */
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--neutral-800);
+  background: linear-gradient(135deg, #fffdf8 0%, #fef9f0 25%, #fff8e6 50%, #fef9f0 75%, #fffdf8 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle ambient color effects */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(255, 107, 71, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 159, 28, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 70%, rgba(244, 208, 63, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 90% 30%, rgba(39, 174, 96, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Custom utility classes */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.food-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8faf8 100%);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.food-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+/* Enhanced animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes color-shift {
+  0% { filter: hue-rotate(0deg); }
+  50% { filter: hue-rotate(180deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 71, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(255, 159, 28, 0.6), 0 0 60px rgba(244, 208, 63, 0.4); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-rainbow {
+  background: linear-gradient(45deg, #ff6b47, #ff9f1c, #f4d03f, #27ae60, #a29bfe, #ff6b47);
+  background-size: 400% 400%;
+  animation: rainbow 3s ease infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-color-shift {
+  animation: color-shift 4s linear infinite;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Enhanced focus styles */
+.focus-ring {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar for webkit browsers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  display: block;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--neutral-100);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--primary-green);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-green-dark);
 }

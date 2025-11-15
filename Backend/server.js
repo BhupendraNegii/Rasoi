@@ -10,7 +10,6 @@ import cartRouter from './routes/cartRoute.js';
 import authMiddleware from './middlewares/auth.js';
 import orderRouter from './routes/orderRoute.js';
 import reservationRouter from './routes/reservationRoute.js';
-import startReservationCleanup from './services/reservationCleanup.js';
 
 const app = express();
 const port = process.env.PORT ? Number(process.env.PORT) : 5000;
@@ -42,5 +41,4 @@ app.get('/' , (req,res)=>{
 
 app.listen(port, () => {
     console.log(`Server started on http://localhost:${port}`);
-    startReservationCleanup();
 });

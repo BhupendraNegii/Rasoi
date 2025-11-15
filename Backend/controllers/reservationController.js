@@ -1,5 +1,4 @@
 import Reservation from '../models/reservationModel.js';
-import ReservationHistory from '../models/reservationHistoryModel.js';
 import validator from 'validator';
 import User from '../models/userModel.js';
 
@@ -270,25 +269,4 @@ const getUserReservations = async (req, res) => {
   }
 };
 export { getUserReservations };
-const getReservationHistory = async (req, res) => {
-  try {
-    const history = await ReservationHistory.findAll({ order: [['ended_at', 'DESC']] });
-    return res.json({ success: true, history });
-  } catch (error) {
-    return res.json({ success: false, message: error.message });
-  }
-};
-const getUserReservationHistory = async (req, res) => {
-  try {
-    const user = await User.findByPk(req.body.userId);
-    if (!user) {
-      return res.json({ success: false, message: 'User not found' });
-    }
-    const history = await ReservationHistory.findAll({ where: { email: user.Email }, order: [['ended_at','DESC']] });
-    return res.json({ success: true, history });
-  } catch (error) {
-    return res.json({ success: false, message: error.message });
-  }
-};
-export { getReservationHistory, getUserReservationHistory };
 
